@@ -17,3 +17,5 @@ type cases = [
 
 // @ts-expect-error
 type error = Concat<null, undefined>;
+
+type Concat<T extends readonly any[], P extends readonly any[]> = [...T, ...P];

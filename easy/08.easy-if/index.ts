@@ -8,3 +8,5 @@ type cases = [
 
 // @ts-expect-error
 type error = If<null, "a", "b">;
+
+type If<A extends Boolean, B, C> = A extends true ? B : C;

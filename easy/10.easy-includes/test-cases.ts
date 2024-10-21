@@ -1,5 +1,4 @@
 import type { Equal, Expect } from "@type-challenges/utils";
-import Includes from "./template";
 
 type cases = [
   Expect<
@@ -23,3 +22,9 @@ type cases = [
   Expect<Equal<Includes<[null], undefined>, false>>,
   Expect<Equal<Includes<[undefined], null>, false>>,
 ];
+
+type Includes<T, P> = T extends [infer A, ...infer R]
+  ? Equal<A, P> extends true
+    ? true
+    : Includes<R, P>
+  : false;

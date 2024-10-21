@@ -7,3 +7,5 @@ type cases = [
     Equal<MyExclude<string | number | (() => void), Function>, string | number>
   >,
 ];
+
+type MyExclude<T, U> = T extends U ? never : T;

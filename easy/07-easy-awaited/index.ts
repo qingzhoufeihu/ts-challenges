@@ -13,3 +13,10 @@ type cases = [
   Expect<Equal<MyAwaited<Z1>, string | boolean>>,
   Expect<Equal<MyAwaited<T>, number>>,
 ];
+
+type MyAwaited<T> =
+  T extends PromiseLike<infer A>
+    ? A extends PromiseLike<infer _>
+      ? Awaited<A>
+      : A
+    : never;
